@@ -12,6 +12,21 @@
 				<textarea data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
 			</div>
 		</div>
+
+        <img ng-src="{{article.filePath}}" />
+
+        <div class="form-group">
+
+            <input type="file" nv-file-select="" uploader="uploader" name="files" /><br/>
+
+            <ul>
+                <li ng-repeat="item in uploader.queue">
+                    Name: <span ng-bind="item.file.name"></span><br/>
+                    <button ng-click="item.upload()">upload</button>
+                </li>
+            </ul>
+        </div>
+
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
 				<button mean-token="'edit-submit'" type="submit" class="btn btn-default">Submit</button>

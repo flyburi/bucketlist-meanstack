@@ -63,6 +63,7 @@ module.exports = function(app, passport, db) {
         //app.use(express.methodOverride());
         //app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname + '/public/uploads' }));
 
+        //app.use(express.static(__dirname + '/storage/images'));
 
         // Import your asset file
         var assets = require('./assets.json');
@@ -108,6 +109,7 @@ module.exports = function(app, passport, db) {
         // Setting the fav icon and static folder
         app.use(express.favicon());
         app.use('/public', express.static(config.root + '/public'));
+        app.use('/storage/images', express.static(config.root + '/storage/images'));
 
         app.get('/modules/aggregated.js', function(req, res) {
             res.setHeader('content-type', 'text/javascript');

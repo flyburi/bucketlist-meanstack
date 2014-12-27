@@ -8,8 +8,6 @@ var mongoose = require('mongoose'),
     fs = require('fs'),
     uuid = require('node-uuid'),
     multiparty = require('multiparty'),
-   // path = require('path'),
-//    util = require('util'),
     _ = require('lodash');
 
 
@@ -116,7 +114,7 @@ exports.upload = function(req, res){
         // uuid is for generating unique filenames.
         var fileName = uuid.v4() + extension;
         var destPath = '/Users/buri/dev/bucketlist-meanstack/storage/images/' + fileName;
-        console.log('destPath : ' + destPath);
+        //console.log('destPath : ' + destPath);
 
         // Server side file type checker.
         /*
@@ -130,8 +128,10 @@ exports.upload = function(req, res){
             if (err) {
                 return res.status(400).send('Image is not saved:');
             }
-            return res.json(destPath);
+            //return res.json(destPath);
+            return res.json('/storage/images/'+fileName);
         });
     });
 };
+
 
