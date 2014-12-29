@@ -3,7 +3,7 @@
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'FileUploader', function ($scope, $stateParams, $location, Global, Articles, FileUploader) {
 
     $scope.global = Global;
-
+    $scope.filePath = [];
     $scope.create = function() {
         var article = new Articles({
             title: this.title,
@@ -17,7 +17,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 
         this.title = '';
         this.content = '';
-        this.filePath ='';
+        this.filePath = [];
     };
 
     var uploader = $scope.uploader = new FileUploader({
@@ -46,8 +46,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     };
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
         console.log('response::::', response);
-        $scope.filePath = response.replace(/\"/g, "");
-
+        $scope.filePath.splice(0,0, response.replace(/\"/g, ""));
     };
     uploader.onErrorItem = function(fileItem, response, status, headers) {
         console.info('onErrorItem', fileItem, response, status, headers);

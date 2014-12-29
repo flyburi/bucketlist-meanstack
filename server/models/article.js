@@ -26,7 +26,7 @@ var ArticleSchema = new Schema({
         trim: true
     },
     filePath : {
-        type: String,
+        type: Array,
         default: '',
         trim: true
     },
