@@ -31,6 +31,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     };
     uploader.onAfterAddingFile = function(fileItem) {
         console.info('onAfterAddingFile', fileItem);
+        //$scope.attachFileDiv.show();
     };
     uploader.onAfterAddingAll = function(addedFileItems) {
         console.info('onAfterAddingAll', addedFileItems);
@@ -45,7 +46,6 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         console.info('onProgressAll', progress);
     };
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
-        console.log('response::::', response);
         $scope.filePath.splice(0,0, response.replace(/\"/g, ""));
     };
     uploader.onErrorItem = function(fileItem, response, status, headers) {
